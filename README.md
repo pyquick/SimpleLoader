@@ -40,19 +40,9 @@
 
 ## 安装方法
 
-### 通过 Homebrew (推荐)
-```bash
-brew tap laobamac/simpleloader
-brew install simpleloader
-```
-
 ### 手动安装
 1. 下载最新版本 [Release](https://github.com/laobamac/SimpleLoader/releases)
 2. 解压后拖拽到 Applications 文件夹
-3. 首次运行时在终端执行：
-```bash
-xattr -dr com.apple.quarantine /Applications/SimpleLoader.app
-```
 
 ## 使用指南
 
@@ -61,7 +51,7 @@ xattr -dr com.apple.quarantine /Applications/SimpleLoader.app
    - 点击"刷新"按钮更新列表
 
 2. **添加 Kext**
-   - 拖放 `.kext` 文件到指定区域，或点击按钮选择文件
+   - 拖放 `.kext/.bundle` 文件到指定区域，或点击按钮选择文件
    - 可随时移除已选文件
 
 3. **设置选项**
