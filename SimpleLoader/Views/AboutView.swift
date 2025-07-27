@@ -2,15 +2,33 @@
 //  AboutView.swift
 //  SimpleLoader
 //
-//  Created by laobamac on 2025/7/27.
+//  Created by laobamac on 2025/7/27.Mod
 //
 
 import SwiftUI
 
 struct AboutView: View {
     @Environment(\.presentationMode) var presentationMode
-    
+    @State private var isExpanded: Bool = false
+    @Namespace private var namespace
+        
     var body: some View {
+        GlassEffectContainer(spacing: 40.0) {
+            HStack(spacing: 40.0) {
+                Image(systemName: "scribble.variable")
+                    .frame(width: 80.0, height: 80.0)
+                    .font(.system(size: 36))
+                    .glassEffect()
+                    .glassEffectID("pencil", in: namespace)
+                if isExpanded {
+                    Image(systemName: "eraser.fill")
+                        .frame(width: 80.0, height: 80.0)
+                        .font(.system(size: 36))
+                        .glassEffect()
+                        .glassEffectID("eraser", in: namespace)
+                }
+            }
+        }
         VStack(spacing: 16) {
             HStack {
                 Image(systemName: "hammer.fill")
@@ -37,7 +55,7 @@ struct AboutView: View {
             
             Divider()
             
-            Link(destination: URL(string: "https://github.com/laobamac/SimpleLoader")!) {
+            Link(destination: URL(string: "https://github.com/pyquick/SimpleLoader")!) {
                 HStack {
                     Image(systemName: "arrow.up.right.square")
                     Text("访问GitHub仓库")
