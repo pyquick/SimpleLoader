@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+@available(macOS 26.0, *)
 @main
 struct SimpleLoaderApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate

@@ -7,7 +7,7 @@
 
 import SwiftUI
 import UniformTypeIdentifiers
-
+@available(macOS 26.0,*)
 struct KDKSelectionView: View {
     @ObservedObject var kdkMerger: KDKMerger
     
@@ -39,7 +39,7 @@ struct KDKSelectionView: View {
                 Button("刷新") {
                     kdkMerger.refreshKDKList()
                 }
-                .buttonStyle(BorderedButtonStyle())
+                .buttonStyle(SmallPrimaryLiquidGlassStyle())
             }
             
             if kdkMerger.isKDKSelected {

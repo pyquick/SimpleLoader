@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+@available(macOS 26.0,*)
 struct StatusView: View {
     @Binding var isInstalling: Bool
     @Binding var isMerging: Bool

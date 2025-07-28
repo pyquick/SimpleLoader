@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+@available(macOS 26.0,*)
 struct FooterView: View {
     var body: some View {
         VStack(spacing: 4) {

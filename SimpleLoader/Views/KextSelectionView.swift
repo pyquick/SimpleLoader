@@ -7,7 +7,7 @@
 
 import SwiftUI
 import UniformTypeIdentifiers
-
+@available(macOS 26.0,*)
 struct KextSelectionView: View {
     @Binding var kextPaths: [String]
     @State private var isTargeted = false
@@ -45,7 +45,7 @@ struct KextSelectionView: View {
                         Button(action: selectFiles) {
                             Text("点击选择文件...")
                         }
-                        .buttonStyle(BorderedButtonStyle())
+                        .buttonStyle(SmallPrimaryLiquidGlassStyle())
                     }
                     .transition(.scale.combined(with: .opacity))
                 } else {

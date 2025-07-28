@@ -7,7 +7,7 @@
 
 import SwiftUI
 import Combine
-
+@available(macOS 26,*)
 struct ContentView: View {
     @StateObject private var kdkMerger = KDKMerger()
     @State private var showAdvancedOptions = false
@@ -85,7 +85,7 @@ struct ContentView: View {
         .animation(.spring(response: 0.3, dampingFraction: 0.7), value: showAdvancedOptions)
         .sheet(isPresented: $showAbout) {
                     AboutView()
-                }
+        }
         .alert(item: $alertMessage) { message in
             Alert(
                 title: Text(message.title),

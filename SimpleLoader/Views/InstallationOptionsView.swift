@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+@available(macOS 26.0,*)
 struct InstallationOptionsView: View {
     @Binding var showAdvancedOptions: Bool
     @Binding var forceOverwrite: Bool
@@ -26,7 +26,7 @@ struct InstallationOptionsView: View {
                     Text(showAdvancedOptions ? "隐藏高级选项" : "显示高级选项")
                         .font(.caption)
                 }
-                .buttonStyle(PlainButtonStyle())
+                .buttonStyle(SmallPrimaryLiquidGlassStyle())
             }
             
             Toggle("强行覆盖重名文件", isOn: $forceOverwrite)

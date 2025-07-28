@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+@available(macOS 26.0,*)
 struct ActionButtonsView: View {
     @Binding var isKDKSelected: Bool
     @Binding var isInstalling: Bool
@@ -27,8 +27,13 @@ struct ActionButtonsView: View {
                 Button(action: openKDKDirectoryAction) {
                     Label("打开KDK目录", systemImage: "folder")
                         .frame(minWidth: 120)
+
                 }
-                .buttonStyle(SecondaryButtonStyle())
+                //.glassEffect(.regular)
+                .buttonStyle(AccentLiquidGlass())
+                //.buttonStyle(.glass)
+                
+                                            
                 
                 Spacer()
                 
@@ -47,7 +52,7 @@ struct ActionButtonsView: View {
                     }
                     .keyboardShortcut("m", modifiers: [.command])
                     .disabled(!isKDKSelected)
-                    .buttonStyle(SecondaryButtonStyle())
+                    .buttonStyle(PrimaryLiquidGlassStyle())
                     .transition(.move(edge: .trailing))
                     
                     Button(action: installAction) {
@@ -56,7 +61,7 @@ struct ActionButtonsView: View {
                     }
                     .keyboardShortcut(.defaultAction)
                     .disabled(!hasKextsSelected)
-                    .buttonStyle(AccentButtonStyle())
+                    .buttonStyle(AccentLiquidGlass())
                     .transition(.move(edge: .trailing))
                 }
             }
@@ -69,7 +74,7 @@ struct ActionButtonsView: View {
                     Label("关于软件", systemImage: "info.square.fill")
                         .frame(minWidth: 120)
                 }
-                .buttonStyle(SecondaryButtonStyle())
+                .buttonStyle(PrimaryLiquidGlassStyle())
                 
                 Spacer()
                 
@@ -77,19 +82,19 @@ struct ActionButtonsView: View {
                     Label("重建缓存", systemImage: "arrow.clockwise")
                         .frame(minWidth: 120)
                 }
-                .buttonStyle(SecondaryButtonStyle())
+                .buttonStyle(PrimaryLiquidGlassStyle())
                 
                 Button(action: createSnapshotAction) {
                     Label("创建快照", systemImage: "camera")
                         .frame(minWidth: 120)
                 }
-                .buttonStyle(SecondaryButtonStyle())
+                .buttonStyle(PrimaryLiquidGlassStyle())
                 
                 Button(action: restoreSnapshotAction) {
                     Label("恢复快照", systemImage: "arrow.uturn.backward")
                         .frame(minWidth: 120)
                 }
-                .buttonStyle(SecondaryButtonStyle())
+                .buttonStyle(PrimaryLiquidGlassStyle())
             }
         }
         .animation(.spring(), value: isInstalling || isMerging)

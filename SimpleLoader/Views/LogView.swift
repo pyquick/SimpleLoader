@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+@available(macOS 26.0,*)
 struct LogView: View {
     @Binding var logMessages: [String]
     

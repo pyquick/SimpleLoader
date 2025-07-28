@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+@available(macOS 26.0,*)
 struct AccentButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
@@ -93,5 +93,67 @@ struct VisualEffectView: NSViewRepresentable {
     func updateNSView(_ nsView: NSVisualEffectView, context: Context) {
         nsView.material = material
         nsView.blendingMode = blendingMode
+    }
+}
+@available(macOS 26.0,*)
+struct PrimaryLiquidGlassStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding(.horizontal, 16)
+            .padding(.vertical, 8)
+            .glassEffect()
+            .buttonStyle(.glass)
+            .foregroundColor(.blue)
+            .scaleEffect(configuration.isPressed ? 0.96 : 1)
+            .animation(.spring(response: 0.3, dampingFraction: 0.5), value: configuration.isPressed)
+    }
+}
+@available(macOS 26.0,*)
+struct AccentLiquidGlass: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding(.horizontal, 16)
+            .padding(.vertical, 8)
+            .glassEffect()
+            .background(
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(Color.accentColor)
+                    .shadow(color: .accentColor.opacity(0.3), radius: configuration.isPressed ? 2 : 4, x: 0, y: configuration.isPressed ? 1 : 2)
+            )
+            .buttonStyle(.glass)
+            .foregroundColor(.white)
+            .scaleEffect(configuration.isPressed ? 0.96 : 1)
+            .animation(.spring(response: 0.3, dampingFraction: 0.5), value: configuration.isPressed)
+    }
+}
+@available(macOS 26.0,*)
+struct SmallAccentLiquidGlass: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding(.horizontal, 12)
+            .padding(.vertical, 6)
+            .glassEffect()
+            .background(
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(Color.accentColor)
+                    .shadow(color: .accentColor.opacity(0.3), radius: configuration.isPressed ? 2 : 4, x: 0, y: configuration.isPressed ? 1 : 2)
+            )
+            .buttonStyle(.glass)
+            .foregroundColor(.white)
+            .scaleEffect(configuration.isPressed ? 0.96 : 1)
+            .animation(.spring(response: 0.3, dampingFraction: 0.5), value: configuration.isPressed)
+    }
+}
+@available(macOS 26.0,*)
+struct SmallPrimaryLiquidGlassStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding(.horizontal, 12)
+            .padding(.vertical, 6)
+            .glassEffect()
+            .buttonStyle(.glass)
+            .foregroundColor(.white)
+            .scaleEffect(configuration.isPressed ? 0.96 : 1)
+            .animation(.spring(response: 0.3, dampingFraction: 0.5), value: configuration.isPressed)
     }
 }

@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+@available(macOS 26.0,*)
 struct HeaderView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
