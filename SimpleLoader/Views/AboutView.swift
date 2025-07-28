@@ -27,6 +27,7 @@ struct AboutView: View {
     @Namespace private var namespace
     @MainActor @preconcurrency
     var body: some View {
+        
         VStack(spacing: 16) {
             Divider()
             HStack {
@@ -64,7 +65,7 @@ struct AboutView: View {
                 presentationMode.wrappedValue.dismiss()
             }
             .buttonStyle(SmallPrimaryLiquidGlassStyle())
-        
+            .badge(3)
             Spacer()
         }
         .padding()

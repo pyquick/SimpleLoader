@@ -162,6 +162,7 @@ class KDKMerger: ObservableObject {
                         self.isMerging = false
                         self.installationProgress = 0
                         self.showAlert(title: "合并失败", message: output ?? "未知错误")
+                        self.errorOperation()
                     }
                 }
             }
@@ -295,6 +296,7 @@ class KDKMerger: ObservableObject {
                         self.isInstalling = false
                         self.installationProgress = 0
                         self.showAlert(title: "操作失败", message: output ?? "未知错误")
+                        self.errorOperation()
                     }
                 }
             }
@@ -373,6 +375,14 @@ class KDKMerger: ObservableObject {
         currentOperation = nil
         stopProgressUpdates()
         logPublisher.send("操作已取消")
+    }
+    func errorOperation() {
+        isInstalling = false
+        isMerging = false
+        installationProgress = 0
+        currentOperation = nil
+        stopProgressUpdates()
+        logPublisher.send("操作失败")
     }
     
     func openKDKDirectory() {
@@ -553,6 +563,7 @@ class KDKMerger: ObservableObject {
                     } else {
                         self.logPublisher.send("错误: \(failureMessage) - \(output ?? "无输出")")
                         self.showAlert(title: "操作失败", message: output ?? failureMessage)
+                        self.errorOperation()
                     }
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
