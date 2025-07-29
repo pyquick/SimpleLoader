@@ -19,9 +19,16 @@ struct ToolbarLabelStyle: LabelStyle {
 extension LabelStyle where Self == ToolbarLabelStyle {
     static var toolbar: Self { .init() }
 }
-@available(macOS 26,*)
+@available(macOS 11,*)
 
 struct AboutView: View {
+    @EnvironmentObject var languageManager: LanguageManager
+    @State private var showLanguageSelection = false
+        
+        let contributors = [
+            "contributor1".localized,
+            "contributor2".localized,
+        ]
     @Environment(\.presentationMode) var presentationMode
     @State private var isExpanded: Bool = false
     @Namespace private var namespace
@@ -37,39 +44,90 @@ struct AboutView: View {
                 VStack(alignment: .leading) {
                     Text("SimpleLoader")
                         .font(.title)
-                        .badge(3)
-                        .bold()
-                    Text("系统扩展安装工具")
+                        
+                    Text("System Extension Tool".localized)
                         .font(.subheadline)
-                        .badge(3)
+                        
                         .foregroundColor(.secondary)
                 }
             }
             .padding(.top)
             Divider()
             VStack(alignment: .leading, spacing: 8) {
-                InfoRow(icon: "number", title: "版本", value: "1.0.0")
-                InfoRow(icon: "person", title: "作者", value: "laobamac")
-                InfoRow(icon: "c", title: "版权", value: "© 2025 保留所有权利")
+                InfoRow(icon: "number", title: "version".localized, value: "1.0.0")
+                                InfoRow(icon: "person", title: "author".localized, value: "laobamac")
+                                InfoRow(icon: "c", title: "copyright".localized, value: "© 2025 " + "rights_reserved".localized)
+                                InfoRow(icon: "globe", title: "language".localized,
+                                        value: languageManager.currentLanguage == "auto" ?
+                                        "auto_detect".localized :
+                                        languageManager.displayName(for: languageManager.currentLanguage))
+                
             }
             Divider()
+            VStack(alignment: .leading, spacing: 8) {
+                            Text("contributors".localized)
+                                .font(.headline)
+                            ForEach(contributors, id: \.self) { contributor in
+                                Text(contributor)
+                                    .font(.subheadline)
+                            }
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal)
+                        
+                        Divider()
             Link(destination: URL(string: "https://github.com/pyquick/SimpleLoader")!) {
                 HStack {
                     Image(systemName: "arrow.up.right.square")
-                    Text("访问GitHub仓库")
+                    Text("visit_github".localized)
                 }
                 .foregroundColor(.accentColor)
             }
-            Divider()
-            Button("关闭", systemImage: "xmark") {
-                presentationMode.wrappedValue.dismiss()
+            if #available(macOS 26, *){
+                Button(action: {
+                    showLanguageSelection = true
+                }) {
+                    Text("change_language".localized)
+                        .font(.subheadline)
+                        //.foregroundColor(.accentColor)
+                }
+                .buttonStyle(SmallPrimaryLiquidGlassStyle())
+                .sheet(isPresented: $showLanguageSelection) {
+                    LanguageSelectionView()
+                        .environmentObject(languageManager)
+                }
+            }else{
+                Button(action: {
+                    showLanguageSelection = true
+                }) {
+                    Text("change_language".localized)
+                        .font(.subheadline)
+                        .foregroundColor(.accentColor)
+                }
+                .buttonStyle(PlainButtonStyle())
+                .sheet(isPresented: $showLanguageSelection) {
+                    LanguageSelectionView()
+                        .environmentObject(languageManager)
+                }
             }
-            .buttonStyle(SmallPrimaryLiquidGlassStyle())
-            .badge(3)
-            Spacer()
+            Divider()
+            if #available(macOS 26, *){
+                Button("close".localized, systemImage: "xmark") {
+                    presentationMode.wrappedValue.dismiss()
+                }
+                .buttonStyle(SmallPrimaryLiquidGlassStyle())
+                .badge(3)
+                Spacer()
+            }else{
+                Button("close".localized, systemImage: "xmark") {
+                    presentationMode.wrappedValue.dismiss()
+                }
+                .buttonStyle(BorderedButtonStyle())
+                Spacer()
+            }
         }
         .padding()
-        .frame(width: 320, height: 280)
+        .frame(width: 320, height: 420)
     }
 }
 

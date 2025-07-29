@@ -107,7 +107,7 @@ struct PrimaryLiquidGlassStyle: ButtonStyle {
                     .fill(.background)
                     .shadow(color: .accentColor.opacity(0.3), radius: configuration.isPressed ? 2 : 4, x: 0, y: configuration.isPressed ? 1 : 2)
             )
-            .foregroundColor(.blue)
+            .foregroundColor(.accentColor)
             .scaleEffect(configuration.isPressed ? 0.96 : 1)
             .animation(.spring(response: 0.3, dampingFraction: 0.5), value: configuration.isPressed)
     }
@@ -125,7 +125,7 @@ struct AccentLiquidGlass: ButtonStyle {
                     .shadow(color: .accentColor.opacity(0.3), radius: configuration.isPressed ? 2 : 4, x: 0, y: configuration.isPressed ? 1 : 2)
             )
             .buttonStyle(.glass)
-            .foregroundColor(.white)
+            
             .scaleEffect(configuration.isPressed ? 0.96 : 1)
             .animation(.spring(response: 0.3, dampingFraction: 0.5), value: configuration.isPressed)
     }
@@ -143,7 +143,6 @@ struct SmallAccentLiquidGlass: ButtonStyle {
                     .shadow(color: .accentColor.opacity(0.3), radius: configuration.isPressed ? 2 : 4, x: 0, y: configuration.isPressed ? 1 : 2)
             )
             .buttonStyle(.glass)
-            .foregroundColor(.white)
             .scaleEffect(configuration.isPressed ? 0.96 : 1)
             .animation(.spring(response: 0.3, dampingFraction: 0.5), value: configuration.isPressed)
     }
@@ -160,7 +159,7 @@ struct SmallPrimaryLiquidGlassStyle: ButtonStyle {
                     .fill(.background)
                     .shadow(color: .accentColor.opacity(0.3), radius: configuration.isPressed ? 2 : 4, x: 0, y: configuration.isPressed ? 1 : 2)
             )
-            .foregroundColor(.white)
+            
             .scaleEffect(configuration.isPressed ? 0.96 : 1)
             .animation(.spring(response: 0.3, dampingFraction: 0.5), value: configuration.isPressed)
     }

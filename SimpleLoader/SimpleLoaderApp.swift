@@ -6,18 +6,26 @@
 //
 
 import SwiftUI
-@available(macOS 26.0, *)
+@available(macOS 26.0,*)
 @main
 struct SimpleLoaderApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
+    @StateObject var languageManager = LanguageManager.shared
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(languageManager)
                 .frame(
                     minWidth: 500, idealWidth: 600, maxWidth: .infinity,
                     minHeight: 600, idealHeight: 700, maxHeight: .infinity
                 )
+                .onAppear {
+                    if languageManager.currentLanguage == "auto" {
+                        languageManager.currentLanguage = Locale.preferredLanguages.first?.components(separatedBy: "-").first ?? "en"
+                    }
+                }
         }
         .windowStyle(HiddenTitleBarWindowStyle())
     }
