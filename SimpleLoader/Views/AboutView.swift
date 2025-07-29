@@ -6,19 +6,8 @@
 //
 
 import SwiftUI
-struct ToolbarLabelStyle: LabelStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        if #available(macOS 26, *) {
-            Label(configuration)
-        } else {
-            Label(configuration)
-                .labelStyle(.titleOnly)
-        }
-    }
-}
-extension LabelStyle where Self == ToolbarLabelStyle {
-    static var toolbar: Self { .init() }
-}
+
+
 @available(macOS 11,*)
 
 struct AboutView: View {
