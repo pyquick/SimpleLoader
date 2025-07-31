@@ -8,7 +8,6 @@ import Foundation
 
 class LanguageManager: ObservableObject {
     static let shared = LanguageManager()
-    
     private let userDefaults = UserDefaults.standard
     private let kLanguageKey = "app_selected_language"
     
@@ -46,3 +45,4 @@ class LanguageManager: ObservableObject {
         }
     }
 }
+

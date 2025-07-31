@@ -9,7 +9,7 @@
   Localizable.strings (English)
   SimpleLoader
 */
-
+"kdks"=" KDKs";
 "app_title" = "SimpleLoader System Extension Installer";
 "app_subtitle" = "Automatically merge KDK and install Kext/Bundle to /System/Library/Extensions";
 "installation_options" = "Installation Options";

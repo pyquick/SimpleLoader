@@ -29,9 +29,9 @@ struct ActionButtonsView: View {
                         .frame(minWidth: 120)
 
                 }
-                //.glassEffect(.regular)
-                .buttonStyle(AccentLiquidGlass())
-                //.buttonStyle(.glass)
+                
+                .buttonStyle(PrimaryLiquidGlassStyle())
+                
                 
                                             
                 

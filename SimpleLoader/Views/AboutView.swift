@@ -101,8 +101,9 @@ struct AboutView: View {
             }
             Divider()
             if #available(macOS 26, *){
-                Button("close".localized, systemImage: "xmark") {
+                Button("close".localized,systemImage: "xmark") {
                     presentationMode.wrappedValue.dismiss()
+                   
                 }
                 .buttonStyle(SmallPrimaryLiquidGlassStyle())
                 .badge(3)

@@ -3,7 +3,7 @@
 //  SimpleLoader
 //
 //  Created by laobamac on 2025/7/27.
-//
+// e 
 
 import Foundation
 import Combine
@@ -66,7 +66,7 @@ class KDKMerger: ObservableObject {
                     self.logPublisher.send("warning_no_kdk".localized)
                     self.showAlert(title: "warning".localized, message: "warning_no_kdk".localized)
                 } else {
-                    self.logPublisher.send("found".localized + " \(kdks.count) 个KDK")
+                    self.logPublisher.send("found".localized + " \(kdks.count)"+"kdks".localized)
                 }
             }
         } catch {
@@ -516,7 +516,7 @@ class KDKMerger: ObservableObject {
         logPublisher.send("last_sealed_snapshot".localized)
         
         startProgressUpdates()
-        
+    
         let shellScript = """
         echo '开始恢复最后一个快照...' && \
         if [[ $(mount | grep -c "/System/Volumes/Update/mnt1") -gt 0 ]]; then \

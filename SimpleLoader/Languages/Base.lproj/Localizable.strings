@@ -9,7 +9,7 @@
   Localizable.strings (Chinese)
   SimpleLoader
 */
-
+"kdks"="个KDK";
 "app_title" = "SimpleLoader 系统扩展安装工具";
 "app_subtitle" = "自动合并 KDK 并安装 Kext/Bundle 到 /System/Library/Extensions";
 "installation_options" = "安装选项";

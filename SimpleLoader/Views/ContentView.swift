@@ -111,6 +111,7 @@ struct ContentView: View {
         .onChange(of: languageManager.currentLanguage) { _ in
                     // 当语言改变时，更新refreshID强制刷新视图
                     refreshID = UUID()
+                
         }
     }
 }
